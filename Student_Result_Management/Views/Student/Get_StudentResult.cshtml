@@ -1,0 +1,165 @@
+﻿@model Student_Result_Management.Models.Y2024
+
+@{
+    ViewData["Title"] = "Student Result";
+}
+
+
+@* <h1 class="text-center my-4">@ViewData["Title"]</h1> *@
+
+<div class="container">
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-5"> 
+            <h4 class="card-title text-center mb-4 text-primary">@ViewData["Title"]</h4>
+            <hr />
+            <dl class="row">
+                <dt class = "col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.RollNo)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.RollNo)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.PassedYear)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.PassedYear)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Hindi)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Hindi)
+                </dd>
+                 <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.English)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.English)
+                </dd>
+                <dt class = "col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Physics)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Physics)
+                </dd>
+                <dt class = "col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Chemistry)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Chemistry)
+                </dd>
+                <dt class = "col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Maths)
+                </dt>
+                <dd class = "col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Maths)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" asp-action="Student_HomePage">Back</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #ffffff;
+    }
+
+    .card-title {
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    dt {
+        font-size: 18px;
+    }
+
+    dd {
+        font-size: 18px;
+    }
+
+    a.btn {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        a.btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+</style>
+
+
+        @* </div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" asp-action="Student_HomePage">Back</a>
+        </div>
+        </div>
+
+
+        <style>
+        body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+        }
+
+        .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #ffffff;
+        }
+
+        .card-title {
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+        }
+
+        h1 {
+        color: #ffffff;
+        }
+
+        dt {
+        font-size: 18px;
+        }
+
+        dd {
+        font-size: 18px;
+        }
+
+        a.btn {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a.btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        }
+        </style> *@
+
+

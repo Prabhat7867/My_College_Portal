@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Student_Result_Management.Models.StudentDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .center {
+        text-align: center; /* Centers text horizontally */
+    }
+</style>
+
+<h1 class="center">Student's details</h1>
+
+<p>
+    <a asp-action="Create">Add New Student</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RollNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FathersName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MothersName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Standard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassedYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FathersName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MothersName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Standard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassedYear)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.RollNo }) |
+                @Html.ActionLink("Details", "Details", new { id=item.RollNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RollNo })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

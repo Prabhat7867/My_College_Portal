@@ -1,0 +1,226 @@
+﻿@* @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="box">
+    <div class="text-center py-5" style="background-color: #f0f2f5;">
+        <h3 class="display-4 mb-4" style="color: #343a40;">Welcome Admin</h3>
+
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Add_NewStudent">
+                        Add New Student
+                    </a><br /><br />
+                    <a class="btn btn-success btn-lg custom-btn" asp-controller="Admin" asp-action="Edit_StudentDetails">
+                        Edit Student Details
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_AllStudents">
+                        Get Students Details
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_AllStudents">
+                        All Students
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                        Add Result
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentDetails">
+                        Edit Student Result
+                    </a>
+                </div>
+            </div>
+
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+                    <a class="btn btn-success btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentResult">
+                        Add Attendence
+                    </a><br /><br />
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                        Edit Attendence
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a class="btn btn-primary btn-lg" asp-action="Student_LoginPage">Back</a>
+            </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .box {
+        width: 800px;
+        padding: 20px;
+        margin: 10px auto;
+        border: 2px solid #007bff;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #66CCFF;
+        /* background-color: #e3f2fd; /* Light blue background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .SmallBox {
+        width: 300px;
+        padding: 20px;
+        margin: 40px auto;
+        border: 2px solid #007bff;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #66CCFF;
+        /* background-color: #e3f2fd; /* Light blue background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .custom-btn {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .custom-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+
+
+
+ *@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="box">
+    <div class="text-center py-5" style="background-color: #f0f2f5;">
+        <h3 class="display-4 mb-4" style="color: #343a40;">Welcome Admin</h3>
+
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+                    <h5 class="display-6 mb-4" style="color: #343a40;">Information</h5>
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Add_NewStudent">
+                        Add New Student
+                    </a><br /><br />
+                    <a class="btn btn-success btn-lg custom-btn" asp-controller="Admin" asp-action="Edit_StudentDetails">
+                        Edit Student Details
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_AllStudents">
+                        Get Students Details
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_AllStudents">
+                        All Students
+                    </a>
+                </div>
+            </div>
+
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+                    <h5 class="display-6 mb-4" style="color: #343a40;">Results</h5>
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                        Add Student Result
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentDetails">
+                        Edit Student Result
+                    </a><br /><br />
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                        Get Students Result
+                    </a><br /><br />
+                    <a class="btn btn-primary btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentDetails">
+                        All Result
+                    </a>
+                </div>
+            </div>
+
+            <div class="SmallBox">
+                <div class="text-center py-5" style="background-color: #f0f2f5;">
+                    <h5 class="display-6 mb-4" style="color: #343a40;">Attendance</h5>
+                    <a class="btn btn-success btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentResult">
+                        Add Student Attendance
+                    </a><br /><br />
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                        Edit Student Attendance
+                    </a><br /><br />
+                    <a class="btn btn-success btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentResult">
+                        Get Student Attendance
+                    </a><br /><br />
+                    <a class="btn btn-info btn-lg custom-btn" asp-controller="Admin" asp-action="Get_StudentAttendance">
+                         All Attendance
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a class="btn btn-primary btn-lg" asp-action="Student_LoginPage">Back</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .box {
+        width: 1100px;
+        padding: 20px;
+        margin: 20px auto;
+        border: 2px solid #007bff;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #66CCFF;
+        /* background-color: #e3f2fd; /* Light blue background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .SmallBox {
+        width: 300px;
+        padding: 20px;
+        margin: 20px;
+        border: 3px solid #007bff;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #FFFFFF;
+        /* background-color: #e3f2fd; /* Light blue background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .custom-btn {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .custom-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+    .d-flex {
+        display: flex;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .gap-3 {
+        gap: 1rem;
+    }
+</style>

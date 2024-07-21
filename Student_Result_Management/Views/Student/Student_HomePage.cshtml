@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="box">
+<div class="text-center py-5" style="background-color: #f0f2f5;">
+    <h3 class="display-4 mb-4" style="color: #343a40;">Welcome Students</h3>
+
+    <div class="d-grid gap-3 col-md-4 col-sm-6 mx-auto">
+            <a class="btn btn-primary btn-lg custom-btn" asp-controller="Student" asp-action="Get_StudentDetails">
+            Get Student Details
+        </a>
+            <a class="btn btn-success btn-lg custom-btn" asp-controller="Student" asp-action="Get_StudentResult">
+            Get Results
+        </a>
+            <a class="btn btn-info btn-lg custom-btn" asp-controller="Student" asp-action="Get_StudentAttendance">
+            Get Attendance
+        </a>
+            <div class="text-center mt-4">
+                <a class="btn btn-primary btn-lg" asp-action="Student_LoginPage">Back</a>
+            </div>
+    </div>
+</div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .box {
+        width: 800px;
+        padding: 20px;
+        margin: 40px auto;
+        border: 2px solid #007bff;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #ffffff;
+        /* background-color: #e3f2fd; /* Light blue background */ 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    .custom-btn {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .custom-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+
+
+
