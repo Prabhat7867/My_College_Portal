@@ -1,0 +1,106 @@
+﻿@model Student_Result_Management.Models.StudentDetails
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+@* <h1 class="text-center my-4">@ViewData["Title"]</h1> *@
+
+<div class="container">
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+            <h4 class="card-title text-center mb-4 text-primary">@ViewData["Title"]</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.RollNo)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.RollNo)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.FathersName)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.FathersName)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.MothersName)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.MothersName)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Standard)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Standard)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Dob)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.Dob)
+                </dd>
+                <dt class="col-sm-3 text-right font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.PassedYear)
+                </dt>
+                <dd class="col-sm-9 text-dark">
+                    @Html.DisplayFor(model => model.PassedYear)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" asp-action="Student_HomePage">Back</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #ffffff;
+    }
+
+    .card-title {
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    dt {
+        font-size: 18px;
+    }
+
+    dd {
+        font-size: 18px;
+    }
+
+    a.btn {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    a.btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+</style>

@@ -16,6 +16,61 @@ namespace Student_Result_Management.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(StudentDetails std)
+        {
+            string data = JsonConvert.SerializeObject(std);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Add_Students"] = "New Student added successfully.";
+                return RedirectToAction("Index");
+
+            }
+            return View();
+
+        }
+
+        //[HttpGet]
+        //public IActionResult Edit(int id)
+        //{
+        //    StudentDetails student = new StudentDetails();
+        //    HttpResponseMessage response = client.GetAsync(url + id).Result;
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        String result = response.Content.ReadAsStringAsync().Result;
+        //        var data = JsonConvert.DeserializeObject<StudentDetails>(result);
+        //        if (data != null)
+        //        {
+        //            student = data;
+        //        }
+        //    }
+        //    return View(student);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Edit(StudentDetails std)
+        //{
+        //    var data = JsonConvert.SerializeObject(std);
+        //    StringContent content = new StringContent(data, UTF32Encoding.UTF8, "application/json");
+        //    HttpResponseMessage response = client.PutAsync(url + std.RollNo, content).Result;
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        TempData["Update_Details"] = "Student details updated successfully.";
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View();
+        //}
+
+
         [HttpGet]
         public IActionResult Admin_LoginPage()
         {
@@ -53,7 +108,7 @@ namespace Student_Result_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit_StudentDetails(int id)
+        public IActionResult Edit(int id)
         {
             StudentDetails student = new StudentDetails();
             HttpResponseMessage response = client.GetAsync(url + id).Result;
@@ -70,7 +125,7 @@ namespace Student_Result_Management.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit_StudentDetails(StudentDetails std)
+        public IActionResult Edit(StudentDetails std)
         {
             var data = JsonConvert.SerializeObject(std);
             StringContent content = new StringContent(data, UTF32Encoding.UTF8, "application/json");
@@ -84,7 +139,7 @@ namespace Student_Result_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get_StudentDetails(int id)
+        public IActionResult Details(int id)
         {
             StudentDetails std = new StudentDetails();
             HttpResponseMessage response = client.GetAsync(url + id).Result;
