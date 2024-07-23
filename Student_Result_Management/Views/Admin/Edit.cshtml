@@ -1,63 +1,140 @@
 ﻿@model Student_Result_Management.Models.StudentDetails
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Student details";
 }
-
-<h1>Edit</h1>
-
-<h4>StudentDetails</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="RollNo" class="control-label"></label>
-                <input asp-for="RollNo" class="form-control" />
-                <span asp-validation-for="RollNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FathersName" class="control-label"></label>
-                <input asp-for="FathersName" class="form-control" />
-                <span asp-validation-for="FathersName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MothersName" class="control-label"></label>
-                <input asp-for="MothersName" class="form-control" />
-                <span asp-validation-for="MothersName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Standard" class="control-label"></label>
-                <input asp-for="Standard" class="form-control" />
-                <span asp-validation-for="Standard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Dob" class="control-label"></label>
-                <input asp-for="Dob" class="form-control" />
-                <span asp-validation-for="Dob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PassedYear" class="control-label"></label>
-                <input asp-for="PassedYear" class="form-control" />
-                <span asp-validation-for="PassedYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+            <h4 class="card-title text-center mb-4 text-primary">@ViewData["Title"]</h4>
+            @* <div class="row"> *@
+                <div class="col-md-8 offset-md-2">
+                    <hr />
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="RollNo" class="control-label"></label>
+                            <input asp-for="RollNo" class="form-control" />
+                            <span asp-validation-for="RollNo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FathersName" class="control-label"></label>
+                            <input asp-for="FathersName" class="form-control" />
+                            <span asp-validation-for="FathersName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MothersName" class="control-label"></label>
+                            <input asp-for="MothersName" class="form-control" />
+                            <span asp-validation-for="MothersName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Standard" class="control-label"></label>
+                            <input asp-for="Standard" class="form-control" />
+                            <span asp-validation-for="Standard" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Dob" class="control-label"></label>
+                            <input asp-for="Dob" class="form-control" />
+                            <span asp-validation-for="Dob" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PassedYear" class="control-label"></label>
+                            <input asp-for="PassedYear" class="form-control" />
+                            <span asp-validation-for="PassedYear" class="text-danger"></span>
+                        </div><br />
+                        <div class="text-center mt-4">
+                            <input type="submit" value="Save" asp-controller="Admin"  asp-action="Edit" class="btn btn-primary btn-lg" formmethod="post"/>
+                            <a asp-area="" asp-controller="Admin" asp-action="Get_AllStudents">Back</a>
+                        </div>
+                    </form>
+                </div>
+            @* </div> *@
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .container {
+        max-width: 800px; /* Adjust the width to make the container smaller */
+        margin: auto;
+    }
+
+    .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #ffffff;
+    }
+
+    .card-title {
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    dt {
+        font-size: 18px;
+    }
+
+    dd {
+        font-size: 18px;
+    }
+
+    form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+       /* width: calc(100%-16px); /* Adjust to the full width minus padding */ */
+        width: 90%; /* Adjust to the full width minus padding */
+        padding: 10px;
+        margin: 5px 0 20px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    input[type="submit"] {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+</style>
+

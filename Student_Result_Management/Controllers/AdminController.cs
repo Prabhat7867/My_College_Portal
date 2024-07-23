@@ -100,7 +100,7 @@ namespace Student_Result_Management.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["Add_Students"] = "New Student added successfully.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Get_AllStudents");
 
             }
             return View();
@@ -133,7 +133,7 @@ namespace Student_Result_Management.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["Update_Details"] = "Student details updated successfully.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Get_AllStudents");
             }
             return View();
         }
