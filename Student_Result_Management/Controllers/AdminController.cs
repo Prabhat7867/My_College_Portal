@@ -156,6 +156,36 @@ namespace Student_Result_Management.Controllers
         }
 
         [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            StudentDetails student = new StudentDetails();
+            HttpResponseMessage response = client.GetAsync(url + id).Result;
+            if (response != null)
+            {
+                string result = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<StudentDetails>(result);
+                if (data != null)
+                {
+                    student = data;
+                }
+            }
+            return View(student);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            HttpResponseMessage response = client.DeleteAsync(url + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["Delete_StudentDetails"] = "Student details deleted successfully";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
+        [HttpGet]
         public IActionResult Get_AllStudents()
         {
             List<StudentDetails> Studensts = new List<StudentDetails>();
