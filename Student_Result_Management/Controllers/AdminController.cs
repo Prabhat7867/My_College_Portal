@@ -39,38 +39,6 @@ namespace Student_Result_Management.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    StudentDetails student = new StudentDetails();
-        //    HttpResponseMessage response = client.GetAsync(url + id).Result;
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        String result = response.Content.ReadAsStringAsync().Result;
-        //        var data = JsonConvert.DeserializeObject<StudentDetails>(result);
-        //        if (data != null)
-        //        {
-        //            student = data;
-        //        }
-        //    }
-        //    return View(student);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Edit(StudentDetails std)
-        //{
-        //    var data = JsonConvert.SerializeObject(std);
-        //    StringContent content = new StringContent(data, UTF32Encoding.UTF8, "application/json");
-        //    HttpResponseMessage response = client.PutAsync(url + std.RollNo, content).Result;
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        TempData["Update_Details"] = "Student details updated successfully.";
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View();
-        //}
-
-
         [HttpGet]
         public IActionResult Admin_LoginPage()
         {
@@ -202,6 +170,122 @@ namespace Student_Result_Management.Controllers
                 }
             }
             return View(Studensts);
+        }
+
+
+//########################################################################################################################
+//#######################################################################         RESULT        ##########################
+
+        [HttpGet]
+        public IActionResult GetALL_StudentResult()
+        {
+            List<Y2024> result = new List<Y2024>();
+            HttpResponseMessage response = client.GetAsync(Result_url).Result;
+            if (response.IsSuccessStatusCode) 
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<List<Y2024>>(content);
+                if (data != null)
+                {
+                    result = data;
+                }
+            }
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult AddNew_Result()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNew_Result(Y2024 result) 
+        {
+            string data = JsonConvert.SerializeObject(result);
+            StringContent content = new StringContent(data,Encoding.UTF8,"application/json");
+            HttpResponseMessage response = client.PostAsync(Result_url,content).Result;
+            if ((response.IsSuccessStatusCode))
+            {
+                return RedirectToAction("GetALL_StudentResult");
+            }
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult Update_Result(int id)
+        {
+            Y2024 result = new Y2024();
+
+            HttpResponseMessage response = client.GetAsync(Result_url+id).Result;
+            if (response.IsSuccessStatusCode) 
+            {
+               string content = response.Content.ReadAsStringAsync().Result;
+               var data = JsonConvert.DeserializeObject<Y2024>(content);
+                if (data != null) 
+                {
+                    result = data;
+                }
+            }return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult Update_Result(Y2024 result)
+        {
+            var data = JsonConvert.SerializeObject(result);
+            StringContent content = new StringContent(data, Encoding.UTF8,"application/json");
+            HttpResponseMessage response = client.PutAsync(Result_url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+               return RedirectToAction("GetALL_StudentResult");   
+            }
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult Result(int id) 
+        {
+            Y2024 res = new Y2024();
+            HttpResponseMessage response = client.GetAsync(Result_url + id).Result;
+            if (response.IsSuccessStatusCode) 
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<Y2024>(content);
+                if (data != null) 
+                {
+                    res = data;
+                }
+            }return View(res);
+
+        }
+
+        [HttpGet]
+        public IActionResult DeleteResult(int id)
+        {
+            Y2024 result = new Y2024();
+            HttpResponseMessage response = client.GetAsync(Result_url + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<Y2024>(content);
+                if (data != null) 
+                {
+                    result = data;
+                }
+            }
+            return View(result);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteResult_Confirmerd(int id) 
+        {
+            HttpResponseMessage response = client.DeleteAsync(Result_url + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("GetALL_StudentResult");
+            }
+            return View();
+
         }
 
 
