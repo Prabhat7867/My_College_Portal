@@ -1,77 +1,127 @@
 ﻿@model IEnumerable<Student_Result_Management.Models.Y2024>
 
 @{
-    ViewData["Title"] = "GetALL_StudentResult";
+    ViewData["Title"] = "All Student results";
 }
 
-<h1>GetALL_StudentResult</h1>
+<h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RollNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PassedYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hindi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.English)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Physics)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Chemistry)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Maths)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RollNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassedYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hindi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.English)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Physics)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Chemistry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Maths)
-            </td>
-            <td>
-                    @Html.ActionLink("Edit", "Update_Result", new { id = item.RollNo }) |
-                    @Html.ActionLink("Details", "Result", new { id = item.RollNo }) |
-                    @Html.ActionLink("Delete", "DeleteResult", new { id = item.RollNo })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+            <h4 class="card-title text-center mb-4 text-primary">Student's Result</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RollNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedYear)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Hindi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.English)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Physics)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Chemistry)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Maths)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RollNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PassedYear)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hindi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.English)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Physics)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Chemistry)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Maths)
+                        </td>
+                        <td>
+                                @Html.ActionLink("Edit", "Update_Result", new { id = item.RollNo }) |
+                                @Html.ActionLink("Details", "Result", new { id = item.RollNo }) |
+                                @Html.ActionLink("Delete", "DeleteResult", new { id = item.RollNo })
+                        </td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <a class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="Index">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        font-family: 'Arial', sans-serif;
+        color: #555;
+    }
+
+    .card {
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #ffffff;
+    }
+
+    .card-title {
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+    }
+
+    h1 {
+        color: #ffffff;
+    }
+
+    dt {
+        font-size: 18px;
+    }
+
+    dd {
+        font-size: 18px;
+    }
+
+    a.btn {
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        a.btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+</style>

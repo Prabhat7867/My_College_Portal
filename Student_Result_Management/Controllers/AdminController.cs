@@ -234,7 +234,7 @@ namespace Student_Result_Management.Controllers
         {
             var data = JsonConvert.SerializeObject(result);
             StringContent content = new StringContent(data, Encoding.UTF8,"application/json");
-            HttpResponseMessage response = client.PutAsync(Result_url, content).Result;
+            HttpResponseMessage response = client.PutAsync(Result_url+result.RollNo, content).Result;
             if (response.IsSuccessStatusCode)
             {
                return RedirectToAction("GetALL_StudentResult");   
@@ -276,7 +276,7 @@ namespace Student_Result_Management.Controllers
             return View(result);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteResult")]
         public IActionResult DeleteResult_Confirmerd(int id) 
         {
             HttpResponseMessage response = client.DeleteAsync(Result_url + id).Result;
