@@ -15,7 +15,7 @@ public partial class StudentDetail
 
     public int Standard { get; set; }
 
-    public string Dob { get; set; }
+    public string Dob { get; set; } = null!;
 
-    public int? PassedYear { get; set; }
+    public int PassedYear { get; set; }
 }

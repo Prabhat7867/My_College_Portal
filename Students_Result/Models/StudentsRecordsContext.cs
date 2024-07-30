@@ -15,6 +15,12 @@ public partial class StudentsRecordsContext : DbContext
     {
     }
 
+    public virtual DbSet<AdminCredential> AdminCredentials { get; set; }
+
+    public virtual DbSet<StudentAttendance> StudentAttendances { get; set; }
+
+    public virtual DbSet<StudentCredential> StudentCredentials { get; set; }
+
     public virtual DbSet<StudentDetail> StudentDetails { get; set; }
 
     public virtual DbSet<Y2020> Y2020s { get; set; }
@@ -33,14 +39,63 @@ public partial class StudentsRecordsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AdminCredential>(entity =>
+        {
+            entity.HasKey(e => e.AdminId).HasName("PK__Admin_Cr__719FE4E8B0483A3C");
+
+            entity.ToTable("Admin_Credentials");
+
+            entity.Property(e => e.AdminId)
+                .ValueGeneratedNever()
+                .HasColumnName("AdminID");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<StudentAttendance>(entity =>
+        {
+            entity.HasKey(e => e.RollNo).HasName("PK__StudentA__7886D5A05AF72B7F");
+
+            entity.ToTable("StudentAttendance");
+
+            entity.Property(e => e.RollNo).ValueGeneratedNever();
+            entity.Property(e => e.Date)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.IsPresent)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<StudentCredential>(entity =>
+        {
+            entity.HasKey(e => e.RollNo).HasName("PK__Student___7886D5A0CE9245B7");
+
+            entity.ToTable("Student_Credentials");
+
+            entity.Property(e => e.RollNo).ValueGeneratedNever();
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<StudentDetail>(entity =>
         {
-            entity.HasKey(e => e.RollNo).HasName("PK__Student___28B6682D67374E73");
+            entity.HasKey(e => e.RollNo).HasName("PK__Student___28B6682D21FF6E2F");
 
             entity.ToTable("Student_Details");
 
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
-            entity.Property(e => e.Dob).HasColumnName("DOB");
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
+            entity.Property(e => e.Dob)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("DOB");
             entity.Property(e => e.FathersName)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -57,67 +112,77 @@ public partial class StudentsRecordsContext : DbContext
 
         modelBuilder.Entity<Y2020>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Y2020");
+            entity.HasKey(e => e.RollNo).HasName("PK__Y2020__28B6682DAE7D1F2D");
 
+            entity.ToTable("Y2020");
+
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.PassedYear).HasColumnName("Passed_Year");
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
         });
 
         modelBuilder.Entity<Y2021>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Y2021");
+            entity.HasKey(e => e.RollNo).HasName("PK__Y2021__28B6682D487420E4");
 
+            entity.ToTable("Y2021");
+
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.PassedYear).HasColumnName("Passed_Year");
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
         });
 
         modelBuilder.Entity<Y2022>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Y2022");
+            entity.HasKey(e => e.RollNo).HasName("PK__Y2022__28B6682D10928874");
 
+            entity.ToTable("Y2022");
+
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.PassedYear).HasColumnName("Passed_Year");
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
         });
 
         modelBuilder.Entity<Y2023>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Y2023");
+            entity.HasKey(e => e.RollNo).HasName("PK__Y2023__28B6682DF593617B");
 
+            entity.ToTable("Y2023");
+
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.PassedYear).HasColumnName("Passed_Year");
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
         });
 
         modelBuilder.Entity<Y2024>(entity =>
         {
-            entity
-                .HasKey(e => e.RollNo).HasName("PK__Student___28B6682D67374E73");
+            entity.HasKey(e => e.RollNo).HasName("PK__Y2024__28B6682D629C27FC");
+
             entity.ToTable("Y2024");
 
+            entity.Property(e => e.RollNo)
+                .ValueGeneratedNever()
+                .HasColumnName("Roll_No");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.PassedYear).HasColumnName("Passed_Year");
-            entity.Property(e => e.RollNo).HasColumnName("Roll_No");
         });
 
         OnModelCreatingPartial(modelBuilder);
