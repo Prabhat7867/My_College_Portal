@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Student_Result_Management.Models;
+using System.Net.Http;
 using System.Text;
 
 namespace Student_Result_Management.Controllers
@@ -9,6 +10,9 @@ namespace Student_Result_Management.Controllers
     {
         private string url = "https://localhost:7042/api/StudentAPI/";
         private string Result_url = "https://localhost:7042/api/Students_Result/";
+        private string AdminCred_url = "https://localhost:7042/api/AdminCredentials/";
+        private string StudentCred_url = "https://localhost:7042/api/StudentCredentials/";
+        private string StudentAttendance_url = "https://localhost:7042/api/StudentAttendance/";
         private HttpClient client = new HttpClient();
 
         public IActionResult Index()
@@ -49,8 +53,22 @@ namespace Student_Result_Management.Controllers
         public IActionResult Admin_LoginPage(int Admin_Id, string Admin_Password)
         {
 
-            HttpContext.Session.SetString("RollNumber", Admin_Id.ToString());
-            return View("Index");
+            //HttpContext.Session.SetString("RollNumber", Admin_Id.ToString());
+
+            HttpResponseMessage response = client.GetAsync(AdminCred_url + Admin_Id).Result;
+            if (response != null)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<AdminCredential>(content);
+                if (data != null)
+                {
+                    if(data.Password == Admin_Password)
+                    {
+                        return View("Index");
+                    }
+                }
+            }
+            return View();
         }
 
         [HttpGet]
