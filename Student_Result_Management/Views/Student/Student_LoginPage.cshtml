@@ -3,10 +3,15 @@
 }
 
 
+
 <div class="box">
     <form>
         <h3>@TempData["Get_details"]</h3>
 
+        @if (ViewData["Login_Status"] != null)
+        {
+            <h3>@ViewData["Login_Status"]</h3>
+        }
         <label for="Roll_No">Enter Roll Number</label>
         <input type="number" id="Roll_No" name="Roll_No" /><br>
 

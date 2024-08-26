@@ -3,15 +3,20 @@
 }
 
 
+
 <div class="box">
     <form>
         <h3>@TempData["Get_details"]</h3>
 
+        @if (ViewData["Login_Status"] != null)
+        {
+            <h3>@ViewData["Login_Status"]</h3>
+        }
         <label for="Roll_No">Enter Admin Id</label>
-        <input type="number" id="Admin_Id" name="Admin Id" /><br>
+        <input type="number" id="Admin_Id" name="Admin_Id" /><br>
 
         <label for="Name">Enter Password</label>
-        <input type="text" id="Admin_Password" name="Admin Password" /><br>
+        <input type="text" id="Admin_Password" name="Admin_Password" /><br>
 
         <input type="submit" value="Submit" asp-action="Admin_LoginPage" formmethod="post" />
     </form>

@@ -13,6 +13,8 @@ namespace Student_Result_Management.Controllers
     {
         private string url = "https://localhost:7042/api/StudentAPI/";
         private string Result_url = "https://localhost:7042/api/Students_Result/";
+        private string StudentCred_url = "https://localhost:7042/api/StudentCredentials/";
+
         private HttpClient client = new HttpClient();
 
         public IActionResult Student_HomePage()
@@ -244,7 +246,32 @@ namespace Student_Result_Management.Controllers
 
             HttpContext.Session.SetString("RollNumber", Roll_No.ToString());
 
-            return View("Student_HomePage");
+            //return View("Student_HomePage");
+
+            //************************************
+            //HttpContext.Session.SetString("RollNumber", Admin_Id.ToString());
+
+            HttpResponseMessage response = client.GetAsync(StudentCred_url + Roll_No).Result;
+            if (response != null)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var data = JsonConvert.DeserializeObject<StudentCredentials>(content);
+                if (data != null)
+                {
+                    if (data.Password == Password)
+                    {
+                        return View("Student_HomePage");
+                    }
+                    else
+                    {
+                        ViewData["Login_Status"] = "Wrong credentials";
+                    }
+                }
+                else { ViewData["Login_Status"] = "Not Exist"; }
+            }
+            return View();
+
+
         }
         [HttpGet]
         public IActionResult Get_StudentAttendance()

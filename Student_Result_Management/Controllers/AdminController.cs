@@ -65,8 +65,12 @@ namespace Student_Result_Management.Controllers
                     if(data.Password == Admin_Password)
                     {
                         return View("Index");
+                    }else
+                    {
+                        ViewData["Login_Status"] = "Wrong credentials";
                     }
                 }
+                else { ViewData["Login_Status"] = "Not Exist"; }
             }
             return View();
         }
